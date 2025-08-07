@@ -17,6 +17,8 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/wordle-solver",
+          "index": "src/index.html",
             "polyfills": ["zone.js"], 
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
