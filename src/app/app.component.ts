@@ -15,7 +15,7 @@ import { WordleSolverComponent } from './components/wordle-solver/wordle-solver.
       padding: 2rem;
     }
   `],
-  templateUrl: './app.component.html',  // Not app.html
-  styleUrls: ['./app.component.scss']   // Not app.scss
+  templateUrl: './app.component.html',  
+  styleUrls: ['./app.component.scss']   
 })
 export class AppComponent {}

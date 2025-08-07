@@ -24,7 +24,6 @@ export class WordService {
 private http!: HttpClient;
 
   constructor(private injector: Injector) {
-    // Use setTimeout to ensure injector is ready
     setTimeout(() => {
       this.http = this.injector.get(HttpClient);
       this.loadDictionary().subscribe();

@@ -15,7 +15,6 @@ if (environment.production) {
 export default function() {
   return bootstrapApplication(AppComponent, {
     providers: [
-      // Add any required providers here
       provideServerRendering()
     ]
   });
