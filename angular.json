@@ -14,6 +14,12 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "serve-ssr": {
+    "builder": "@angular/ssr:node",
+    "options": {
+      "buildTarget": "wordle-solver:build:production"
+    }
+  },
         "build": {
           "builder": "@angular/build:application",
           "options": {
@@ -43,6 +49,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+      {
+        "replace": "src/environments/environment.ts",
+        "with": "src/environments/environment.prod.ts"
+      }
+    ],
               "budgets": [
                 {
                   "type": "initial",
@@ -97,6 +109,12 @@
               "src/styles.scss"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options":{
+            "baseHref":"https://haoxin-wang.github.io/wordle/"
+          }
         }
       }
     }

@@ -1,11 +1,22 @@
+import { enableProdMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
 import { provideServerRendering } from '@angular/platform-server';
+import { AppComponent } from './app/app.component';
+import { environment } from './environments/environment';
 
-const bootstrap = () => bootstrapApplication(AppComponent, {
-  providers: [
-    provideServerRendering()
-  ]
-});
+if (environment.production) {
+  enableProdMode();
+}
 
-export default bootstrap;
+// export const bootstrap = () => bootstrapApplication(AppComponent, {
+//   providers: []
+// });
+
+export default function() {
+  return bootstrapApplication(AppComponent, {
+    providers: [
+      // Add any required providers here
+      provideServerRendering()
+    ]
+  });
+}
