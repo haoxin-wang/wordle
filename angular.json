@@ -112,9 +112,9 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options":{
-            "baseHref":"https://haoxin-wang.github.io/wordle/"
-          }
+           "options":{
+           "baseHref":"https://haoxin-wang.github.io/wordle/"
+            }
         }
       }
     }
