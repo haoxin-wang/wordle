@@ -1,0 +1,71 @@
+<div class="solver-container">
+  <div class="header">
+    <h1>Wordle Solver for WarSpite</h1>
+    <p>Enter your known letters, contains letters, and excluded letters to find possible solutions</p>
+  </div>
+  
+  <form [formGroup]="solverForm" (ngSubmit)="onSubmit()" class="solver-form">
+    <div class="input-group">
+      <label for="knownLetters">
+        <i class="fas fa-map-marker-alt"></i> Known Positions
+        <span class="hint">(e.g. "a1b2" - a in position 1, b in position 2)</span>
+      </label>
+      <input type="text" id="knownLetters" formControlName="knownLetters" placeholder="a1b2...">
+    </div>
+    
+    <div class="input-group">
+      <label for="unknownLetters">
+        <i class="fas fa-search"></i> Contains Letters
+        <span class="hint">(letters that must be in the word, position unknown)</span>
+      </label>
+      <input type="text" id="unknownLetters" formControlName="unknownLetters" placeholder="abc...">
+    </div>
+    
+    <div class="input-group">
+      <label for="excludedLetters">
+        <i class="fas fa-ban"></i> Excluded Letters
+        <span class="hint">(letters not in the word)</span>
+      </label>
+      <input type="text" id="excludedLetters" formControlName="excludedLetters" placeholder="xyz...">
+    </div>
+    
+    <div class="form-footer">
+      <button type="submit" class="solve-btn" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Solve Wordle</span>
+        <span *ngIf="isLoading">
+          <i class="fas fa-spinner fa-spin"></i> Searching...
+        </span>
+      </button>
+      
+      <div class="toggle-container">
+        <label class="toggle">
+          <input type="checkbox" [(ngModel)]="showDefinitions" [ngModelOptions]="{standalone: true}">
+          <span class="toggle-slider"></span>
+        </label>
+        <span>Show Definitions</span>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="suggestions.length > 0" class="results-section">
+    <div class="results-header">
+      <h2>Found {{ suggestions.length }} Possible Words</h2>
+      <div class="result-count">{{ suggestions.length }} matches</div>
+    </div>
+    
+    <div class="word-grid">
+      <div *ngFor="let item of suggestions" class="word-card">
+        <div class="word">{{ item.word }}</div>
+        <div *ngIf="showDefinitions" class="definition">{{ item.definition }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="suggestions.length === 0 && !isLoading" class="no-results">
+    <div class="no-results-icon">
+      <i class="fas fa-search"></i>
+    </div>
+    <h3>No words found</h3>
+    <p>Try adjusting your search criteria. Make sure you're using the correct format for known positions.</p>
+  </div>
+</div>
