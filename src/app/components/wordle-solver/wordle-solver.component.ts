@@ -15,6 +15,7 @@ export class WordleSolverComponent implements OnInit {
   suggestions: WordObject[] = [];
   isLoading = false;
   showDefinitions = true; // Toggle for definitions
+  showEmptyFormError = false;
 
   constructor(
     private fb: FormBuilder,
@@ -35,11 +36,17 @@ export class WordleSolverComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const formValues = this.solverForm.value;
+     this.showEmptyFormError = !formValues.knownLetters && 
+                          !formValues.unknownLetters && 
+                          !formValues.excludedLetters;
+
+    if (this.showEmptyFormError) {
+      return;
+    }
     if (this.solverForm.valid) {
       this.isLoading = true;
       this.suggestions = [];
-      
-  
       try {
         this.suggestions = this.wordService.getSuggestions(this.solverForm.value);
       } catch (error) {
