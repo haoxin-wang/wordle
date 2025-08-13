@@ -11,6 +11,7 @@ import { WordService,WordObject} from '../../services/word.service';
   styleUrls: ['./wordle-solver.component.scss']
 })
 export class WordleSolverComponent implements OnInit {
+  showProblemStatement  = false;
   solverForm: FormGroup;
   suggestions: WordObject[] = [];
   isLoading = false;
@@ -58,6 +59,10 @@ export class WordleSolverComponent implements OnInit {
     }
   }
 
+  toggleProblemStatement(): void {
+    this.showProblemStatement = !this.showProblemStatement;
+  }
+  
   toggleDefinitions(): void {
     this.showDefinitions = !this.showDefinitions;
   }

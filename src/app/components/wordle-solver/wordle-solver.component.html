@@ -2,6 +2,24 @@
   <div class="header">
     <h1>Wordle Solver</h1>
     <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">Wordle link</a>
+    <br>
+    <button (click)="toggleProblemStatement()" class="info-btn">
+    <i class="fas fa-info-circle"></i> 
+    {{ showProblemStatement ? 'Hide' : 'Show' }} Purpose
+  </button>
+  <!-- Problem Statement Block -->
+<div *ngIf="showProblemStatement" class="problem-statement">
+  <h3>About This Tool</h3>
+  <p>
+    This website is for people who find Wordle challenging because not all the players are native English speakers, 
+    and still want to participate and contribute. This solver helps people by:
+  </p>
+  <ul>
+    <li>Providing word definitions to improve vocabulary</li>
+    <li>Suggesting possible words based on your input</li>
+    <li>Helping understand letter patterns</li>
+  </ul>
+</div>
     <p>Enter your known letters, contains letters, and excluded letters to find possible solutions</p>
   </div>
   

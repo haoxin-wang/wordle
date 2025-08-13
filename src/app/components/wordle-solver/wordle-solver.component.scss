@@ -225,6 +225,45 @@
     padding-top: 0.8rem;
     border-top: 1px dashed #ecf0f1;
   }
+  .info-btn {
+  background: transparent;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin: 5px 0;
+  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(52, 152, 219, 0.1);
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+.problem-statement {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 0 4px 4px 0;
+
+  h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+}
   
   /* No results state */
   .no-results {
