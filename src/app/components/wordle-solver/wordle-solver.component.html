@@ -33,12 +33,16 @@
     </div>
     
     <div class="input-group">
-      <label for="unknownLetters">
-        <i class="fas fa-search"></i> Contains Letters
-        <span class="hint">(letters that must be in the word, position unknown)</span>
-      </label>
-      <input type="text" id="unknownLetters" formControlName="unknownLetters" placeholder="abc...">
-    </div>
+  <label for="unknownLetters">
+    <i class="fas fa-search"></i> Contains Letters
+    <span class="hint">(e.g. "abc" or "e34" - letter e is in word but not positions 3 or 4)</span>
+  </label>
+  <input type="text" id="unknownLetters" formControlName="unknownLetters" 
+         placeholder="abc or e34...">
+  <div *ngIf="containsLettersError" class="error-message">
+    <i class="fas fa-exclamation-circle"></i> {{ containsLettersError }}
+  </div>
+</div>
     
     <div class="input-group">
       <label for="excludedLetters">

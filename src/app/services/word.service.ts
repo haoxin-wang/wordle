@@ -99,11 +99,30 @@ private http!: HttpClient;
 
     // Check unknown letters (must contain)
     if (constraints.unknownLetters) {
-      const required = constraints.unknownLetters.toLowerCase().split('');
-      if (!required.every(letter => wordLower.includes(letter))) {
+    const input = constraints.unknownLetters.toLowerCase();
+    const letterGroups = input.match(/([a-z])(\d*)/g) || [];
+    
+    for (const group of letterGroups) {
+      const letter = group[0];
+      const excludedPositions = group.slice(1).split('').map(Number);
+      
+      // Check letter is in word at all
+      if (!wordLower.includes(letter)) {
         return false;
       }
+      
+      // Check letter isn't in excluded positions
+      for (const pos of excludedPositions) {
+        if (pos >= 1 && pos <= 5) {  // Only check valid positions
+          const index = pos - 1; // Convert to 0-based index
+          if (wordLower[index] === letter) {
+            return false;
+          }
+        }
+      }
     }
+  }
+
 
     // Check known positions
     if (constraints.knownLetters) {

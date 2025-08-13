@@ -290,6 +290,18 @@
     max-width: 500px;
     margin: 0 auto;
   }
+  .error-message {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  
+  i {
+    font-size: 0.9rem;
+  }
+}
   
   /* Responsive design */
   @media (max-width: 768px) {
